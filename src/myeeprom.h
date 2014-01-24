@@ -53,6 +53,7 @@
 
 #if defined(PCBTARANIS)
   #define EEPROM_VER       215
+//  #define EEPROM_VER       215.1 // T. Foley
 #elif defined(PCBSKY9X)
   #define EEPROM_VER       215
 #elif defined(CPUM2560) || defined(CPUM2561)
@@ -875,7 +876,8 @@ PACK(typedef struct t_FrSkyData {
   FrSkyChannelData channels[2];
   uint8_t usrProto; // Protocol in FrSky user data, 0=None, 1=FrSky hub, 2=WS HowHigh, 3=Halcyon
   uint8_t voltsSource;
-  uint8_t blades;   // How many blades for RPMs, 0=2 blades, 1=3 blades
+//  uint8_t blades;   // How many blades for RPMs, 0=2 blades, 1=3 blades // T.Foley
+  uint8_t blades;   // How many blades for RPMs, 0=1 blades, 1=2 blades // T.Foley
   uint8_t currentSource;
   uint8_t screensType;
   FrSkyScreenData screens[MAX_FRSKY_SCREENS];
@@ -884,6 +886,8 @@ PACK(typedef struct t_FrSkyData {
   int8_t  varioCenterMin;
   int8_t  varioMin;
   int8_t  varioMax;
+  uint8_t spur_gear; // T.Foley
+  uint8_t pinion_gear; // T. Foley
   FrSkyRSSIAlarm rssiAlarms[2];
 }) FrSkyData;
 #else
@@ -891,7 +895,8 @@ PACK(typedef struct t_FrSkyData {
 PACK(typedef struct t_FrSkyData {
   FrSkyChannelData channels[2];
   uint8_t usrProto:2; // Protocol in FrSky user data, 0=None, 1=FrSky hub, 2=WS HowHigh, 3=Halcyon
-  uint8_t blades:2;   // How many blades for RPMs, 0=2 blades, 1=3 blades
+//  uint8_t blades:2;   // How many blades for RPMs, 0=2 blades, 1=3 blades T.Foley
+  uint8_t blades:2;   // How many blades for RPMs, 0=1 blades, 1=2 blades T.Foley
   uint8_t screensType:2;
   uint8_t voltsSource:2;
   int8_t  varioMin:4;
@@ -902,6 +907,8 @@ PACK(typedef struct t_FrSkyData {
   int8_t  varioCenterMin:5;
   uint8_t currentSource:3;
   int8_t  varioCenterMax:5;
+  uint8_t spur_gear; // T.Foley
+  uint8_t pinion_gear; // T. Foley
 }) FrSkyData;
 #endif
 
