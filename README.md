@@ -1,10 +1,13 @@
 opentx-RELEASE-r2923
 ====================
 
-Master for patching release version 2923 of OpenTx
+Branch for patching release version 2923 of OpenTx
 
-This will serve as a base for adding custom patches to the release version that the core developers of OpenTx do not wish to implement in the core version they maintain and to allow users to work with a known good release and only small patches.
+- This branch adds RPM Gear Ratio options to the release version of OpenTx v2923.
 
-The development version (aka Next) is too unstable for daily user use.
 
 Note that compiling any of the branches in this repository is at your own risk.   Make sure you understand what is being changed before running.  In many cases the eeprom file will not longer be compatible with the stock version so make sure you have backups BEFORE testing and before upgrading to a newer release by the devs.
+
+Also being a custom mod, do not report issues related to this mod in the main developement tree, keep them local to here.  They have enough work to do without confusing things.
+
+As new versions are released I'll patch as required and create a new branch with the mod.
