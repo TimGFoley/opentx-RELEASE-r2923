@@ -252,7 +252,8 @@ GVARS = NO
 SHELL = sh
 IMG2LBM = -python ../util/img2lbm.py
 TRANSLATE = -python ../util/translate.py
-SVNREV = $(shell sh -c "svnversion | egrep -o '[[:digit:]]+[[:alpha:]]*$$'")
+# SVNREV = $(shell sh -c "svnversion | egrep -o '[[:digit:]]+[[:alpha:]]*$$'") T.Foley
+VERSION = 2923.1
 
 SRC =
 CPPSRC =
@@ -1069,7 +1070,8 @@ stamp_header:
 	@echo "//Automatically generated file (Makefile) - do not edit" > stamp-opentx.h
 	@echo "#define DATE_STR \"`date +%Y-%m-%d | tr -d '\r\n'`\"" >> stamp-opentx.h
 	@echo "#define TIME_STR \"`date +%H:%M:%S | tr -d '\r\n'`\"" >> stamp-opentx.h
-	@echo "#define SVN_STR  \"opentx-r$(SVNREV)\"" >> stamp-opentx.h
+#	@echo "#define SVN_STR  \"opentx-r$(SVNREV)\"" >> stamp-opentx.h
+	@echo "#define VERS_STR  \"$(VERSION)\"" >> stamp-opentx.h
 	@cat stamp-opentx.h
 
 stock-stamp:
@@ -1105,7 +1107,8 @@ arm-stamp:
 taranis-stamp:
 	@echo "#define DATE_STR \"`date +%Y-%m-%d`\"" > stamp-opentx-taranis.txt
 	@echo "#define TIME_STR \"`date +%H:%M:%S`\"" >> stamp-opentx-taranis.txt
-	@echo "#define SVN_VERS \"opentx-r$(SVNREV)\"" >> stamp-opentx-taranis.txt
+#	@echo "#define SVN_VERS \"opentx-r$(SVNREV)\"" >> stamp-opentx-taranis.txt
+	@echo "#define SVN_VERS \"$(VERSION)\"" >> stamp-opentx-taranis.txt
 	@cat stamp-opentx-taranis.txt
 
 translations/se.h: translations/cz.h.txt translations/de.h.txt translations/es.h.txt translations/fr.h.txt translations/it.h.txt translations/pt.h.txt translations/se.h.txt 
