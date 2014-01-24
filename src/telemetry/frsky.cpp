@@ -171,11 +171,17 @@ void parseTelemHubByte(uint8_t byte)
 
   ((uint8_t*)&frskyData.hub)[structPos] = lowByte;
   ((uint8_t*)&frskyData.hub)[structPos+1] = byte;
+  float gear_ratio = 1; // T. Foley
 
   switch ((uint8_t)structPos) {
 
     case offsetof(FrskySerialData, rpm):
-      frskyData.hub.rpm *= (uint8_t)60/(g_model.frsky.blades+2);
+      // frskyData.hub.rpm *= (uint8_t)60/(g_model.frsky.blades+2); T. Foley
+      frskyData.hub.rpm *= (uint8_t)60;
+      frskyData.hub.rpm /= (g_model.frsky.blades+1);
+      gear_ratio = (((float)g_model.frsky.spur_gear+1) / ((float)g_model.frsky.pinion_gear+1));      
+      frskyData.hub.rpm = (float)(frskyData.hub.rpm / gear_ratio);
+
       if (frskyData.hub.rpm > frskyData.hub.maxRpm)
         frskyData.hub.maxRpm = frskyData.hub.rpm;
       break;
