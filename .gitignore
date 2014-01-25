@@ -1,0 +1,10 @@
+# Compiled source #
+###################
+*.*~
+*~
+eeprom.bin
+opentx.map
+opentx.bin
+opentx.elf
+opentx.lst
+simu
